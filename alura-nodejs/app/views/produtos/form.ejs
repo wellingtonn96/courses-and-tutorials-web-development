@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro de produtos loja</title>
+</head>
+<body>
+
+    <h1>Cadastro de produtos loja</h1>
+
+    <%if(validation.length > 0){%>
+    <tr>
+        <% for(let i; i < validation.length; i++){ %>
+        <td><%= validation[i].msg %></td>
+        <% } %>
+    </tr>
+    <% } %>
+
+    <form action="/produtos" method="POST">
+
+        <label for="nome">Titulo do livro: </label></br>
+        <input type="text" id="nome" name="nome"></br>
+
+        <label for="descricao">Descrição: </label></br>
+        <textarea name="descricao" name="descricao" id="" cols="20" rows="10"></textarea></br>
+
+        <label for="valor">Valor:</label></br>
+        <input type="text" id="valor" name="valor"></br>
+
+        <button type="submit">Enviar</button></br>
+    </form>
+</body>
+</html>

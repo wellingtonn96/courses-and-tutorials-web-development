@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Produtos</title>
+</head>
+<body>
+    <h1>View listagem de produtos</h1>
+
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>Nome</td>
+            <td>Descrição</td>
+            <td>Valor</td>
+        </tr>
+        <% for(var i=0; i < dados.length; i++){ %>
+        <tr>
+            <td><%= dados[i].idLivro %></td>
+            <td><%= dados[i].nome %></td>
+            <td><%= dados[i].descricao %></td>
+            <td><%= dados[i].valor %></td>
+        </tr>
+        <% } %>
+    </table>
+
+</body>
+</html>
