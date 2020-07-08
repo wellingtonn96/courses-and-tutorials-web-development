@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nome": "Hambúrguer",
+      "email": "weltossouza@gmail.com"
+    },
+    {
+      "name": "fdfsdf",
+      "email": "dfdsfsd",
+      "id": 2
+    },
+    {
+      "name": "dfdsfdsf",
+      "email": "dfdsfdf",
+      "id": 3
+    }
+  ]
+}

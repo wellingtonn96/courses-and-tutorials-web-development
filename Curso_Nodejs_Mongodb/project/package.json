@@ -1,0 +1,27 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "3": "^2.1.0",
+    "10": "0.0.1",
+    "body-parser": "^1.18.3",
+    "consign": "^0.1.6",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-validator": "^3.2.0",
+    "mysql": "^2.16.0",
+    "n": "^2.1.12",
+    "node": "^11.8.0",
+    "package.json": "^2.0.1",
+    "update": "^0.7.4",
+    "version": "^0.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
