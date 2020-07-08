@@ -1,0 +1,31 @@
+Insert the missing statement to get all the columns from the Customers table.
+
+SELECT * FROM Customers
+
+
+                        SELECT WHERE
+
+
+Select all records where the city has the value berlin
+
+SELECT * FROM Customers
+WHERE city = 'berlin'
+
+
+Use the keyword to select all records where city is not 'berlin'
+
+SELECT * FROM  Customers
+WHERE NOT city = 'berlin'
+
+Select all records whehre the CustomerID columns has the value 32.
+
+SELECT * FROM Customers
+where CustomerID = 32;
+
+Select all records where the city column has the value 'Berlin' and the FostalCode column 
+has the value 12209
+
+SELECT * FROM Custormers
+WHERE city = 'Berlin'
+and PostalCode = 12209;
+
