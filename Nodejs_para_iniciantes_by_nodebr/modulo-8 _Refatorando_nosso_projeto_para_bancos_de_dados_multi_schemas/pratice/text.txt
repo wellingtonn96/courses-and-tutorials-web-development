@@ -1,0 +1,8 @@
+///1 criar Strategy Example///
+///2 separar Strategy Exmple em diretorios criando a estrura do projeto///
+///3 criar o sequelize Example///
+///4 implementar o o banco de dados postegres no projeto e executando todos os casos de tests///
+///5 criar o mongoose expample///
+///implementar o mongo db no projeto e executando todos os caso de tests///
+///7 refatorar o mongo no projeto///
+8 refatorar o postgres no projeto

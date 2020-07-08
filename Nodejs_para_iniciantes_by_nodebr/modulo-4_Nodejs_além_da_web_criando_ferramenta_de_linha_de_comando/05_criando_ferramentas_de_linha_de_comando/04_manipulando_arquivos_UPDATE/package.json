@@ -1,0 +1,18 @@
+{
+  "name": "01_manipulando_arquivos_READ",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^7.0.0"
+  },
+  "dependencies": {
+    "comander": "0.0.1-security"
+  }
+}

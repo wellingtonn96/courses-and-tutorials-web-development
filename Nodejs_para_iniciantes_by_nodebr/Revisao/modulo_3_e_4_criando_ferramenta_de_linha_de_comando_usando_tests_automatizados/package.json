@@ -1,0 +1,16 @@
+{
+  "name": "modulo_3_e_4_criando_ferramenta_de_linha_de_comando_usando_tests_automatizados",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^4.1.1",
+    "mocha": "^7.0.1"
+  }
+}
