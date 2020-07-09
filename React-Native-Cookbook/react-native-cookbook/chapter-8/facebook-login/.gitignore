@@ -1,0 +1,4 @@
+node_modules/**/*
+.expo/*
+npm-debug.*
+APP_ID.js

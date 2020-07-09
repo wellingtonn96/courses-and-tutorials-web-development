@@ -1,0 +1,42 @@
+Introdução ao SQL
+
+SQL (Structured Query Language)
+  - Linguagem Estruturado de Consulta
+
+Foramada pelo conjunto das linguagems
+  - DDL (Data Definition Language): Linguagem de Definição de Dados
+  - DML (Data Manipulation Language): Linguagem de Manipulação de Dados
+  - DQL (Data Query Language): Linguagem de Consulta de Dados
+  - DCL (Data Control Language): Linguagem de Controle de Dados
+  - DTL (Data Transaction Language): Linguagem de Controle de Dados
+
+
+DDL (Data Definition Language)
+
+  Linguagem de Definição de Dados
+  . CREATE: Cria uma Estruturado
+  . ALTER: Cria uma Estruturado
+  . DROP: Exclui uma Estruturado
+
+DML (Data Manipulation Language):
+  . INSERT: Insere dados
+  . UPDATE: Alera dados
+  . DELETE: Exclui dados
+
+DQL (Data Query Language)
+  .INSERT: Retorna dados
+  . Oradenação de dados
+  . Agrupamento de dados
+  . Funções artméticas
+
+DCL (Data Control Language)
+  . Linguagem de Controle de Dados
+  . GRANT: Habilita acesso a dados e operações
+  . REVOKE: Revoga acesso a dados e operações
+
+DTL (Data Transaction Language)
+  . Linguagem de Transação de dados
+  . START TRANSACTION: Inicia a tranzação
+  . COMMIT: Concretiza a tranzação
+  . RELLBACK: Anula a tranzação
+

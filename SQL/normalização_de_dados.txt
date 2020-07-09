@@ -1,0 +1,102 @@
+RELACIONAMENTOS
+
+Ligação entre tabelas
+
+CHAVE PRIMÁRIA (Primary Key, PK)
+
+Coluna com valores únicos
+
+CHAVE COMPOSTA
+
+  Composição de duas ou mais colunas para gerar uma combinação única
+
+CHAVE Estrangeira
+
+  Coluna que armazena a chave primárai de outras tablelasd
+
+
+Relacionamento 1 para 1 (1:1)
+
+  Para cada registro da primeira tabela existe no máximo um
+  correspondente na segunda tabela, e vice-versa
+
+Relacinamento 1 para muitos (1:*)
+
+  Para cada registro da primeira tabela pode existir um ou mais correspondente na sugunda tabela,
+  e para cada registro na segunda tabela existe apenas um registro correspondente na primeira tabela.
+
+Relacinamento muitos para muitos (*:*)
+
+  Para cada registro da primeira tabela pode existir um ou mais correspondente na segunda tabela, e
+  vice-versa
+
+BOAS PRATICAS 
+
+  . Quanto menor melhor
+  . Transparente para o usúario
+
+
+Diagrama de modelo de dados
+
+  Um dos padrões de modelagem de dados
+  
+  . Relacinamento 1:1 -||--------||-
+
+  . Relacinamento 1:* -||--------|<
+
+  . Relacionamento *:* >|--------|< 
+
+
+Anomalias dos dados
+  
+  . Tabelas "fazen tudo" geram Anomalias
+
+  . Anomalia de inserção
+    - impede a inclusão de registro a falta de dados
+
+  . Anomalia de exclusão
+    - Impede a exclusão de registro devido ao relacinameto com outra tabela
+
+  . Anomalia de alteração
+    - Impede a alteração de registros devido ao relacinamento com outra tabela
+
+
+  
+  Normalização de dados
+
+    . Evitar Anomalias
+    . Facilitar a manutenção
+    . Maximiza a performace
+    . Manter a integridade dos dados
+    . Normalização de dados
+
+    - Criada em 1970
+    - 5 Formas Normais(FNs)
+    - Na prática a noramalização é feita por intuição
+    - Resulta em um número maior de tabelas no banco
+    - Mais tabelas podem aumentar a manutenção e diminuir a performace
+    - Deve ser utilizado com bom senso
+
+
+
+  Primeira forma Normal(1FN)]
+
+    . Cada linha de tabela deve representar um registro
+    . Cada célula de tabela deve conter um único valor
+
+  Segunda forma Normal(2FN)
+
+    . Obrigatoriamente estar na 1FN
+    . Atributos não chave da tabela devem depender de alguma das chaves da tabela
+
+  Terceira forma normal(2FN)
+
+    . Obrigatóriamente estar na 2FN
+    . Atributos não chave da tabela depender exclusivamente da chave primária da tabela
+
+  4FN e 5FN
+    . Separam em novas tabelas valores que ainda esteja redundantes em uma mesma colunas
+
+    
+
+
