@@ -13,7 +13,7 @@ export class UserRepository extends Repository<User> {
     const { username, password } = authCredentialsDto;
 
     const salt = await bcrypt.genSalt();
-    const user = new User();
+    const user = this.create();
     user.username = username;
     user.salt = salt;
     user.password = await this.hashPassword(password, salt);
@@ -28,15 +28,13 @@ export class UserRepository extends Repository<User> {
       }
     }
   }
-
   async validateUserPassword(
     authCredentialsDto: AuthCredentialsDto,
   ): Promise<string> {
     const { username, password } = authCredentialsDto;
-
     const user = await this.findOne({ username });
 
-    if (user && user.validatePassword(password)) {
+    if (user && (await user.validatePassword(password))) {
       return user.username;
     } else {
       return null;
