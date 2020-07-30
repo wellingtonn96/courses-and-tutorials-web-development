@@ -1,10 +1,4 @@
-import { uuid } from 'uuidv4';
-
-interface IAppointment {
-  id: string;
-  provider: string;
-  date: Date;
-}
+import Appointment from '../models/Appointment';
 
 interface CreateAppointmentDTO {
   provider: string;
@@ -12,22 +6,18 @@ interface CreateAppointmentDTO {
 }
 
 class AppointmentRepository {
-  private appointments: IAppointment[];
+  private appointments: Appointment[];
 
   constructor() {
     this.appointments = [];
   }
 
-  public all(): IAppointment[] {
+  public all(): Appointment[] {
     return this.appointments;
   }
 
-  public create({ provider, date }: CreateAppointmentDTO): IAppointment {
-    const appointment = {
-      id: uuid(),
-      provider,
-      date,
-    };
+  public create({ provider, date }: CreateAppointmentDTO): Appointment {
+    const appointment = new Appointment({ provider, date });
 
     this.appointments.push(appointment);
 
