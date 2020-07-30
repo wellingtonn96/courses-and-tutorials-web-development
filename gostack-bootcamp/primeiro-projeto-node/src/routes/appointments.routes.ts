@@ -1,6 +1,7 @@
-import { Router, response } from 'express';
+import { Router } from 'express';
 import { parseISO } from 'date-fns';
 import AppointmentsRepository from '../repositories/AppointmentRepository';
+import CreateAppointmentService from '../services/CreateAppointmentService';
 
 const appointmentsRouter = Router();
 const appointmentsRepository = new AppointmentsRepository();
@@ -17,7 +18,11 @@ appointmentsRouter.post('/', (request, response) => {
 
     const parseDate = parseISO(date);
 
-    const appointment = appointmentsRepository.create({
+    const createAppointment = new CreateAppointmentService(
+      appointmentsRepository
+    );
+
+    const appointment = createAppointment.execute({
       provider,
       date: parseDate,
     });
