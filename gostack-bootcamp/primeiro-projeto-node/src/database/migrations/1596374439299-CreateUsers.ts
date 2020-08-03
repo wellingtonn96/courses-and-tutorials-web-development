@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateUsers1596374439299 implements MigrationInterface {
+export default class CreateUsers1586877055453 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -11,20 +11,20 @@ export default class CreateUsers1596374439299 implements MigrationInterface {
             type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()',
+            default: 'uuid_generate_v4()', // generate uuid automaticaly
           },
           {
             name: 'name',
             type: 'varchar',
           },
           {
-            name: 'password',
-            type: 'varchar',
-          },
-          {
             name: 'email',
             type: 'varchar',
             isUnique: true,
+          },
+          {
+            name: 'password',
+            type: 'varchar',
           },
           {
             name: 'created_at',
