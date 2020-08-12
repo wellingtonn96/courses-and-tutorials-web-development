@@ -3,9 +3,9 @@ import { loadCSV } from '../utils/loadCSV';
 import CreateTransactionService from './CreateTransactionService';
 
 class ImportTransactionsService {
-  async execute(filename: string): Promise<Transaction[]> {
+  async execute(pathFile: string): Promise<Transaction[]> {
     const createTransaction = new CreateTransactionService();
-    const data = await loadCSV(filename);
+    const data = await loadCSV(pathFile);
 
     const promises = data.map(item =>
       createTransaction.execute({

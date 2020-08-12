@@ -1,10 +1,8 @@
 import csvParse from 'csv-parse';
 import fs from 'fs';
-import path from 'path';
 
-async function loadCSV(filename: string): Promise<any[]> {
-  const csvFilePath = path.resolve(__dirname, '..', '..', 'tmp', `${filename}`);
-  const readCSVStream = fs.createReadStream(csvFilePath);
+async function loadCSV(pathFile: string): Promise<any[]> {
+  const readCSVStream = fs.createReadStream(pathFile);
 
   const parseStream = csvParse({
     from_line: 2,
