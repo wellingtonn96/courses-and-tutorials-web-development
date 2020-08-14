@@ -24,7 +24,7 @@
     "react/jsx-filename-extension": [
       "warn",
       {
-        "extensions": [".tsx", ".js"]
+        "extensions": [".tsx", ".jsx", ".ts", ".js"]
       }
     ],
     "react-hooks/rules-of-hooks": "error",
@@ -36,7 +36,9 @@
       "ignorePackages",
       {
         "tsx": "never",
-        "js": "never"
+        "js": "never",
+        "jsx": "never",
+        "ts": "never"
       }
     ]
   },
