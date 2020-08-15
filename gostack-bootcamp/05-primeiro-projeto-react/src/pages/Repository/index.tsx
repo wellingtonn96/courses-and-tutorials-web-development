@@ -22,18 +22,29 @@ interface Repository {
   };
 }
 
+interface Issue {
+  id: number;
+  title: string;
+  html_url: string;
+  user: {
+    login: string;
+  };
+}
+
 const Repository: React.FC = () => {
+  const [repository, setRepository] = useState<Repository | null>(null);
+  const [issues, setIssues] = useState<Issue[]>([]);
+
   const { params } = useRouteMatch<RepositoryParams>();
 
   useEffect(() => {
-    const [repository, setRepository] = useState<Repository | null>(null);
-    const [issues, setIssues] = useState([]);
-    api.get(`/repos/${params.repository}`).then((response) => {
+    api.get(`repos/${params.repository}`).then((response) => {
       console.log(response.data);
+      setRepository(response.data);
     });
 
-    api.get(`/repos/${params.repository}/issues `).then((response) => {
-      console.log(response.data);
+    api.get(`repos/${params.repository}/issues `).then((response) => {
+      setIssues(response.data);
     });
   }, [params.repository]);
 
@@ -46,42 +57,48 @@ const Repository: React.FC = () => {
           voltar
         </Link>
       </Header>
-      <RepositoryInfo>
-        <header>
-          <img
-            src="https://avatars2.githubusercontent.com/u/2254731?s=460&u=0ba16a79456c2f250e7579cb388fa18c5c2d7d65&v=4"
-            alt="avatar img"
-          />
-          <div>
-            <strong>rocketseat/unform</strong>
-            <p>descrição do repositorio</p>
-          </div>
-        </header>
-        <ul>
-          <li>
-            <strong>1808</strong>
-            <span>Stars</span>
-          </li>
-          <li>
-            <strong>48</strong>
-            <span>Forks</span>
-          </li>
-          <li>
-            <strong>67</strong>
-            <span>Issues</span>
-          </li>
-        </ul>
-      </RepositoryInfo>
-      <Issues>
-        <Link to="/dashboard">
-          <img src="" alt="" />
-          <div>
-            <strong>sdfsdfsdfsd</strong>
-            <p>sdfsdsdfsd</p>
-          </div>
+      {repository ? (
+        <RepositoryInfo>
+          <header>
+            <img
+              src={repository?.owner.avatar_url}
+              alt={repository.owner.login}
+            />
+            <div>
+              <strong>{repository.full_name}</strong>
+              <p>{repository.description}</p>
+            </div>
+          </header>
+          <ul>
+            <li>
+              <strong>{repository.stargazers_count}</strong>
+              <span>Stars</span>
+            </li>
+            <li>
+              <strong>{repository.forks_count}</strong>
+              <span>Forks</span>
+            </li>
+            <li>
+              <strong>{repository.open_issues_count}</strong>
+              <span>Issues</span>
+            </li>
+          </ul>
+        </RepositoryInfo>
+      ) : (
+        <p>Carrgando</p>
+      )}
 
-          <FiChevronRight size={20} />
-        </Link>
+      <Issues>
+        {issues.map((issue) => (
+          <a key={issue.id} href={issue.html_url}>
+            <div>
+              <strong>{issue.title}</strong>
+              <p>{issue.user.login}</p>
+            </div>
+
+            <FiChevronRight size={20} />
+          </a>
+        ))}
       </Issues>
     </>
   );
