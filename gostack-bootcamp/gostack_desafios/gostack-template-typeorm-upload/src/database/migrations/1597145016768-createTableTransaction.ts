@@ -27,10 +27,6 @@ export class createTableTransactions1597145016768
             type: 'decimal',
           },
           {
-            name: 'category_id',
-            type: 'uuid',
-          },
-          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',

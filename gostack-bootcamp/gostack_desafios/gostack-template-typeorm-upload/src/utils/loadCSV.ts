@@ -25,4 +25,8 @@ async function loadCSV(pathFile: string): Promise<any[]> {
   return lines;
 }
 
-export { loadCSV };
+function removeCSVFile(filePath: string): Promise<void> {
+  return fs.promises.unlink(filePath);
+}
+
+export { loadCSV, removeCSVFile };
