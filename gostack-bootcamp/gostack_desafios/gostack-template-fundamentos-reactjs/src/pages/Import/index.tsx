@@ -10,6 +10,7 @@ import Upload from '../../components/Upload';
 import { Container, Title, ImportFileContainer, Footer } from './styles';
 
 import alert from '../../assets/alert.svg';
+
 import api from '../../services/api';
 
 interface FileProps {
