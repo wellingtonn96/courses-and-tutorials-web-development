@@ -25,6 +25,7 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
   "rules": {
+    "react/jsx-one-expression-per-line": "off",
     "radix": "off",
     "array-callback-return": "off",
     "@typescript-eslint/camelcase": "off",

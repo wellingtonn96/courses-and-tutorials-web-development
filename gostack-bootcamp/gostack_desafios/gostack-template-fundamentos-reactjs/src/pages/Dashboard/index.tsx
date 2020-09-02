@@ -6,6 +6,8 @@ import total from '../../assets/total.svg';
 
 import api from '../../services/api';
 
+import formatValue from '../../utils/formatValue';
+
 import Header from '../../components/Header';
 
 import { Container, CardContainer, Card, TableContainer } from './styles';
@@ -37,31 +39,30 @@ const Dashboard: React.FC = () => {
 
       const { data } = response;
 
-      setBalance(data.balance);
+      const formatedBalance = {
+        income: formatValue(data.balance.income),
+        outcome: formatValue(data.balance.outcome),
+        total: formatValue(data.balance.total),
+      };
 
-      const list: Transaction[] = [];
+      setBalance(formatedBalance);
+
+      const listWithFormatedTransactions: Transaction[] = [];
 
       data.transactions.map((item: Transaction) => {
         const transaction = {
-          id: item.id,
-          title: item.title,
-          value: item.value,
-          formattedValue: new Intl.NumberFormat('pt-br', {
-            style: 'currency',
-            currency: 'BRL',
-          }).format(parseFloat(item.value)),
+          ...item,
+          formattedValue:
+            item.type === 'outcome'
+              ? `- ${formatValue(parseFloat(item.value))}`
+              : formatValue(parseFloat(item.value)),
           formattedDate: new Date(item.created_at).toLocaleDateString('pt-br'),
-          type: item.type,
-          category: {
-            title: item.category.title,
-          },
-          created_at: item.created_at,
         };
 
-        list.push(transaction);
+        listWithFormatedTransactions.push(transaction);
       });
 
-      setTransactions(list);
+      setTransactions(listWithFormatedTransactions);
     }
 
     loadTransactions();
