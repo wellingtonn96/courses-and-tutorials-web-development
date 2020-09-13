@@ -4,17 +4,22 @@ import path from 'path';
 import uploadConfig from '@config/upload';
 import fs from 'fs';
 import { AppError } from '@shared/errors/AppError';
+import IUsersRepository from '../repositories/IUsersRepository';
+import { injectable, inject } from 'tsyringe';
 
 interface Request {
   user_id: string;
   avatarFilename: string;
 }
 
+@injectable()
 class UpdateAvatarService {
+  constructor(
+    @inject('UserRepository')
+    private userRepository: IUsersRepository
+  ) {}
   public async execute({ user_id, avatarFilename }: Request): Promise<User> {
-    const userRepository = getRepository(User);
-
-    const user = await userRepository.findOne(user_id);
+    const user = await this.userRepository.findById(user_id);
 
     if (!user) {
       throw new AppError('Only authenticated users can change avatar', 401);
@@ -31,7 +36,7 @@ class UpdateAvatarService {
 
     user.avatar = avatarFilename;
 
-    await userRepository.save(user);
+    await this.userRepository.save(user);
 
     return user;
   }

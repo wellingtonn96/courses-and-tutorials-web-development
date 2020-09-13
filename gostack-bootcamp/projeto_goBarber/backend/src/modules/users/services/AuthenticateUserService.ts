@@ -5,6 +5,8 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { jwt } from '@config/auth';
 import { AppError } from '@shared/errors/AppError';
+import IUsersRepository from '../repositories/IUsersRepository';
+import { injectable, inject } from 'tsyringe';
 
 interface Request {
   email: string;
@@ -16,11 +18,14 @@ interface Response {
   token: string;
 }
 
+@injectable()
 class AuthenticateUserService {
+  constructor(
+    @inject('UserRepository')
+    private userRepository: IUsersRepository
+  ) {}
   public async execute({ email, password }: Request): Promise<Response> {
-    const usersRepository = getRepository(User);
-
-    const user = await usersRepository.findOne({ where: { email } });
+    const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
       throw new AppError('Incorrect email/password combination.', 401);
