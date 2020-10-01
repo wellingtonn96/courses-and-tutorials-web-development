@@ -1,7 +1,8 @@
 {
   "env": {
     "es2020": false,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "extends": [
     "airbnb-base",

@@ -17,7 +17,9 @@ class CreateUserService {
     private userRepository: IUsersRepository
   ) {}
   async execute({ name, email, password }: Request): Promise<User> {
-    const checkUserExists = await this.userRepository.findByEmail(email);
+    const checkUserExists = this.userRepository.findByEmail(email);
+
+    console.log(checkUserExists);
 
     if (checkUserExists) {
       throw new AppError('Email address already used', 401);
