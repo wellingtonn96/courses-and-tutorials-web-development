@@ -10,9 +10,15 @@ das variáveis. Analise o que está sendo impresso no console para saber como
 resolver o problema corretamente.
 */
 var five = '5';
+
+five = parseInt(five)
+
 console.log( five + ' é número?', typeof five === 'number' );
 
 var concat = 10 + 10;
+
+concat = concat.toString()
+
 console.log( '"' + concat + '" é uma string? E é igual a "1010"?', typeof concat === 'string' );
 
 /*
@@ -26,6 +32,24 @@ propriedade, usando os valores passados por parâmetro.
 */
 // ?
 
+const operation = {
+  '+':  (num, num2) => {
+    return num + num2
+  },
+  '-': (num, num2) => {
+    return num - num2
+  },
+  '*': (num, num2) => {
+    return num * num2
+  },
+  '/': (num, num2) => {
+    return num / num2
+  },
+  '%': (num, num2) => {
+    return num % num2
+  },
+}
+
 /*
 Crie uma função chamada `isOperatorValid`, que receberá um operador por
 parâmetro.
@@ -37,6 +61,10 @@ Caso contrário, "false".
 - O desafio é fazer o retorno sem usar "if" ou "switch".
 */
 // ?
+
+const isOperatorVaid = (operator) => {
+  return operator in operation
+}
 
 /*
 Agora vamos criar a calculadora.
@@ -52,6 +80,21 @@ os dois parâmetros da função de retorno de "calculator".
 */
 // ?
 
+const calculator = (operator) => {
+  const isValid = isOperatorVaid(operator)
+
+  if(!isValid) return isValid
+
+  return (num1, num2) => {
+    const isValidNum = typeof num1  === 'number' && typeof num2  === 'number'
+
+    if(!isValidNum) return isValidNum
+    
+    const operar = operation[operator]
+
+    return operar(num1, num2)
+  }
+} 
 /*
 Crie uma função chamada "showOperationMessage" que recebe três parâmetros:
 - o operador, o primeiro número e o segundo número. O retorno da função
@@ -61,6 +104,14 @@ Essa função mostrará a mensagem da operação que criaremos mais abaixo.
 */
 // ?
 
+const showOperationMessage = (operator, num1, num2) => {
+  const executeOperation = calculator(operator)
+
+  const results = executeOperation(num1, num2)
+
+  return `A operação [${num1}] [${operator}] [${num2}] = ${results}`
+}
+
 /*
 Crie uma função chamada "showErrorMessage" que recebe um parâmetro: o
 operador da operação cálculo, quando a operação não for válida.
@@ -68,6 +119,14 @@ Essa função deverá retornar a frase:
 'Operação "[OPERATOR]" não permitida!'
 */
 // ?
+
+const showErrorMessage = (operator) => {
+  const isValid = isOperatorVaid(operator)
+
+  if(!isValid) {
+    return `Operação "[${operator}]" não permitida!`
+  }
+}
 
 /*
 Nossa calculadora está pronta! Agora vamos testá-la:
@@ -77,6 +136,10 @@ PASSO 1:
 */
 // ?
 
+let number1 = 0
+let number2 = 0
+let operationSignal 
+
 /*
 PASSO 2:
 Atribua à variável operationSignal o operador de soma, e declare uma
@@ -84,6 +147,9 @@ variável chamada "sum", que receba a função "calculator", passando por
 parâmetro a variável que recebeu o sinal da operação.
 */
 // ?
+
+operationSignal = '+'
+let sum = calculator(operationSignal)
 
 /*
 PASSO 3:
@@ -99,6 +165,11 @@ parâmetros para o método "log" de "console":
 */
 // ?
 
+if(!sum) {
+  const results = sum(number1, number2)
+
+  console.log('[resultado]', results)
+}
 /*
 Repita desde o "PASSO 2" com as operações de subtração, multiplicação,
 divisão e resto. Crie variáveis com os nomes "subtraction",
