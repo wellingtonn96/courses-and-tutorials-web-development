@@ -12,18 +12,18 @@ Mostre esse array no console.
 console.log( 'Number Objects Array:' );
 // ?
 const numberObjects = [
-  { "number":  1 },
-  { "number":  2 },
-  { "number":  3 },
-  { "number":  4 },
-  { "number":  5 },
-  { "number":  6 },
-  { "number":  7 },
-  { "number":  8 },
-  { "number":  9 },
-  { "number":  10 },
+  { number:  1 },
+  { number:  2 },
+  { number:  3 },
+  { number:  4 },
+  { number:  5 },
+  { number:  6 },
+  { number:  7 },
+  { number:  8 },
+  { number:  9 },
+  { number:  10 },
 ]
-console.log(`[numberObjects]`, numberObjects)
+
 /*
 Crie um array chamado `justNumbers`, que terá como elementos somente os
 números do array criado acima. Mostre esse novo array no console.
@@ -55,10 +55,7 @@ Mostre o resultado no console.
 */
 console.log( '\nOperation:' );
 // ?
-const operaation = justMod2Or3.reduce((prev, item) => {
-  const lastValue = prev++
-  return lastValue * item
-}, 0)
+const operaation = justMod2Or3.reduce((prev, current) => (prev + 1) * current, 0)
 
 console.log(operaation)
 
@@ -70,6 +67,10 @@ console.
 console.log( '\nOperation 2:' );
 // ?
 
+const operation2 = justMod2Or3.reduceRight((prev, current) => (prev + 1) * current, 0)
+
+console.log(operation2)
+
 /*
 Crie um array chamado `name`. Cada elemento desse array deve ser uma sílaba
 do seu nome. Vamos reduzir esse array, juntando todas as sílabas, mas usando
@@ -80,7 +81,11 @@ falada, como se você estivesse falando em código xD
 */
 console.log( '\nSeu nome na língua do "P":' );
 // ?
+const named = ['w', 'e', 'lling', 'ton']
 
+const langP = named.reduce((prev, current) => `${prev}P${current}`,'')
+
+console.log(langP)
 /*
 Crie uma variável chamada `inversedName`, que reduzirá o array em uma string
 e atribuirá o seu nome invertido (usando o array criado acima).
@@ -88,12 +93,16 @@ e atribuirá o seu nome invertido (usando o array criado acima).
 console.log( '\nInversed Name:' );
 // ?
 
+const inversedName = named.reduceRight((prev, current) => `${prev}${current}`)
+
+console.log(inversedName)
+
 /*
 Mostre no console o array `numberObjects`.
 */
 console.log( '\nNumber objects' );
 // ?
-
+console.log(`[numberObjects]`, numberObjects)
 /*
 Verifique se existem em algum índice de numberObjects um objeto ìgual a
 { number: 2 }. Se houver, mostre no console:
@@ -106,16 +115,31 @@ o que acontece ;)
 console.log( '\nExiste um { number: 2 } em numberObjects?' );
 // ?
 
+const indexNumber = numberObjects.findIndex(item => item.number === 2)
+
+if(numberObjects.indexOf(numberObjects[indexNumber]) > 0) {
+  console.log(`"Existe um objeto ${JSON.stringify(numberObjects[indexNumber])} em numberObjects!`)
+} else {
+  console.log( "Não existe um objeto { number: 2 } em numberObjects")
+}
 /*
 Fazendo o mesmo do exercício acima, mas começando a buscar do último índice,
 será que obtemos um resultado diferente? Faça a busca a partir do índice 2.
 */
 console.log( '\nE buscando a partir do último índice, o { number: 2 } existe?' );
 // ?
-
+if(numberObjects.lastIndexOf(numberObjects[indexNumber], 2) > 0) {
+  console.log(`"Existe um objeto ${JSON.stringify(numberObjects[indexNumber])} em numberObjects!`)
+} else {
+  console.log( "Não existe um objeto { number: 2 } em numberObjects")
+}
 /*
 Verifique se `justMod2Or3` é um array. Se for, mostre-o no console, no
 formato de String.
 */
 console.log( '\njustMod2Or3 é um array? Se for, a representação dele em String é:' );
 // ?
+
+if(Array.isArray(justMod2Or3)) {
+  console.log(justMod2Or3.toString())
+}
