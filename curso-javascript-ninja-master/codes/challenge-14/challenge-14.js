@@ -11,22 +11,40 @@ Mostre esse array no console.
 */
 console.log( 'Number Objects Array:' );
 // ?
-
+const numberObjects = [
+  { "number":  1 },
+  { "number":  2 },
+  { "number":  3 },
+  { "number":  4 },
+  { "number":  5 },
+  { "number":  6 },
+  { "number":  7 },
+  { "number":  8 },
+  { "number":  9 },
+  { "number":  10 },
+]
+console.log(`[numberObjects]`, numberObjects)
 /*
 Crie um array chamado `justNumbers`, que terá como elementos somente os
 números do array criado acima. Mostre esse novo array no console.
 */
 console.log( '\nJust Numbers:' );
-// ?
 
+const justNumbers = numberObjects.map(item => item.number)
+// ?
+console.log('[justNumbers]', justNumbers)
 /*
 Crie um novo array chamado `justMod2Or3`, que receberá do array criado acima
 somente os números que forem divisíveis por 2 ou 3. Mostre esse novo array
 no console.
+
 */
 console.log( '\nJust module of division by 2 or 3:' );
 // ?
 
+const justMod2Or3 = justNumbers.filter(item => item % 2 === 0 || item % 3 === 0)
+
+console.log('[justMod2Or3]', justMod2Or3)
 /*
 Declare uma variável chamada operation que receba, do array criado acima,
 um valor reduzido pela seguinte operação:
@@ -37,6 +55,12 @@ Mostre o resultado no console.
 */
 console.log( '\nOperation:' );
 // ?
+const operaation = justMod2Or3.reduce((prev, item) => {
+  const lastValue = prev++
+  return lastValue * item
+}, 0)
+
+console.log(operaation)
 
 /*
 Faça o mesmo cálculo passado acima, mas começando do último item para o
